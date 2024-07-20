@@ -1,6 +1,7 @@
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Box.H>
+#include <memory>
 
 // hide console window in windows
 #ifdef _WIN32
@@ -8,8 +9,8 @@
 #endif
 
 int main(int argc, char **argv) {
-    Fl_Window *window = new Fl_Window(340,180);
-    Fl_Box *box = new Fl_Box(20,40,300,100,"Hello, World!");
+    auto window = std::make_unique<Fl_Window>(340,180);
+    auto box = std::make_unique<Fl_Box>(20,40,300,100,"Hello, World!");
     box->box(FL_UP_BOX);
     box->labelsize(36);
     box->labelfont(FL_BOLD+FL_ITALIC);
